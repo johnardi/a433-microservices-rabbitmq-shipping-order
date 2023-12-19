@@ -1,0 +1,31 @@
+#Use Apiversion 1
+apiVersion: v1
+kind: PersistentVolume #Object type persistent volume
+#set name & Label
+metadata:
+  name: rabbitmq-pv # set nama pv
+  labels:
+    type: local # label denga type local
+spec: # spesifikasi
+  storageClassName: manual #Storage class name
+  capacity:
+    storage: 1Gi # kapasitas yang digunakan 1 GB
+  accessModes:
+    - ReadWriteOnce #Access mode set to Read-Write-Once
+  hostPath: #Set host path
+    path: "/mnt/data"
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim #Object type persistent volume claim
+#set name & Label
+metadata:
+  name: rabbitmq-pvc # set nama pvc
+spec:
+  storageClassName: manual #Set storage class name
+  accessModes:
+    - ReadWriteOnce #Access mode set to Read-Write-Once
+  resources:
+    requests:
+      storage: 1Gi # kapasitas yang digunakan 1 GB

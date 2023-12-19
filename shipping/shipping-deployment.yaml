@@ -1,0 +1,30 @@
+#Use API Version 1
+apiVersion: apps/v1
+kind: Deployment #Object type deployment
+# Metadata untuk deployment
+metadata:
+  name: shipping-service #Set name deployment
+spec: # spesifikasi
+  replicas: 1 #Set replicas Pod yang akan dijalankan
+  #Menggunakan selector untuk mengidentifikasi Pod
+  selector:
+    matchLabels:
+      # Penyesuaian berdasarkan pod nama label app
+      app: shipping-service
+  # Template Pod yang akan di-deploy oleh Deployment
+  template:
+    metadata:
+      labels:
+        app: shipping-service # metadata dengan label app
+    spec:
+      containers:
+      - name: shipping-service # Set name untuk container
+        # Image dan tag docker image yang digunakan
+        image: ghcr.io/johnardi/shipping-service:v1
+        imagePullPolicy: IfNotPresent # kebijakan pull dari dockerhub jika tidak ada di lokal
+        ports:
+        - containerPort: 3001 # Set port yang akan digunakan untuk mengakses container
+        env: # mendefinisikan environment variabel
+        - name: AMQP_URL # nama environment variabel
+          #value: "amqp:rabbitmq-service-internal"
+          value: "amqp://guest:guest@10.111.98.132:5672" # value environment variabel

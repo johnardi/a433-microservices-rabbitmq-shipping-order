@@ -1,0 +1,14 @@
+#Apiversion 1
+apiVersion: v1
+kind: Service #Object type service
+metadata:
+  name: shipping-service #Set nama service
+  labels:
+    app: shipping-service #memiliki label yang sama denga Pod
+spec: # spesifikasi
+  type: NodePort #memakai type NodePort
+  ports:
+  - port: 3001 # port yang digunakan 3001
+  #Menggunakan selector untuk menargetkan Pod yang dibuat sebelumnya
+  selector:
+    app: shipping-service # selector app yang terhubung shipping-service

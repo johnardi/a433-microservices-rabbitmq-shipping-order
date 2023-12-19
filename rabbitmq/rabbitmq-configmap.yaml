@@ -1,0 +1,10 @@
+#Use APiversion 1
+apiVersion: v1
+kind: ConfigMap #Set as configmap
+##Set name & data.conf location
+metadata:
+  name: rabbitmq-config
+data:
+  data.conf: | # menetapkan untuk mount /rabbitmq/data
+    storage:
+      data: /rabbitmq/data
