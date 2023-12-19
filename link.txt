@@ -1,0 +1,9 @@
+github : https://github.com/johnardi/a433-microservices.git
+shipping-service : https://github.com/johnardi/a433-microservices/tree/shipping-service
+order-service : https://github.com/johnardi/a433-microservices/tree/order-service
+kubernetes : https://github.com/johnardi/a433-microservices-rabbitmq-shipping-order/tree/kubernetes
+
+
+Github Package
+shipping-service : ghcr.io/johnardi/shipping-service
+order-service : ghcr.io/johnardi/order-service
