@@ -8,6 +8,5 @@ spec: # spesifikasi
   ports:
   - port: 5672 # port yang digunakan denga protocol TCP
     protocol: TCP
-  #type: ClusterIP
   selector:
     app: rabbitmq # mendefinisikan selector app
