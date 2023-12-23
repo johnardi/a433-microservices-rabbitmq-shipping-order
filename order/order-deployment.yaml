@@ -20,11 +20,14 @@ spec: # spesifikasi
       containers:
       - name: order-service # Set name untuk container
         # Image dan tag docker image yang digunakan
-        image: ghcr.io/johnardi/order-service:v1
+        image: ghcr.io/johnardi/order-service:latest
         imagePullPolicy: IfNotPresent # kebijakan pull jika image tidak tersedia di lokal
         ports:
         - containerPort: 3000 # Set port yang akan digunakan untuk mengakses container
         env: # mendefinisikan environment variabel
+        - name: PORT
+          # Nilai untuk PORT
+          value: "3000"
         - name: AMQP_URL # mendefinisikan encironment vaiabel AMQP_URL
           #value: "amqp:rabbitmq-service-internal"
-          value: "amqp://guest:guest@10.111.98.132:5672" # nilai variabel AMQP_URL
+          value: "amqp://guest:guest@10.106.80.231:5672" # nilai variabel AMQP_URL
